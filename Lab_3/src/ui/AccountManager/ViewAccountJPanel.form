@@ -22,135 +22,136 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-              <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="LblTitle" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="btnback" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="lblTitle" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="352" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="350" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="IblBankName" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Component id="lblAccountNumber" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtbankname" min="-2" pref="147" max="-2" attributes="0"/>
+                      <Component id="txtAccountNumber" min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
-                      <Component id="IblAccountNumber" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Component id="lblRoutingNumber" linkSize="1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtaccountnumber" min="-2" pref="147" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" attributes="0">
-                      <Component id="IblRoutingNumber" min="-2" pref="107" max="-2" attributes="0"/>
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
-                      <Component id="txtroutingnumber" min="-2" pref="147" max="-2" attributes="0"/>
+                      <Component id="txtRoutingNumber" min="-2" pref="133" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="IblBalance" min="-2" pref="107" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblBankName" linkSize="1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="btnsave" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="btnCreateAccount" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtbalance" min="-2" pref="147" max="-2" attributes="0"/>
+                          <Component id="btnupdate" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtBankName" min="-2" pref="133" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace min="0" pref="219" max="32767" attributes="0"/>
+              <EmptySpace pref="209" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="24" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="btnBack" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="LblTitle" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
+                  <Component id="btnback" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTitle" alignment="3" min="-2" pref="23" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="IblRoutingNumber" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="txtroutingnumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblRoutingNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtRoutingNumber" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="IblAccountNumber" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="txtaccountnumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtAccountNumber" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="IblBankName" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="txtbankname" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblBankName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtBankName" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="IblBalance" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
-                  <Component id="txtbalance" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnsave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="btnupdate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-              <Component id="btnCreateAccount" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="316" max="32767" attributes="0"/>
+              <EmptySpace pref="365" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JButton" name="btnBack">
+    <Component class="javax.swing.JButton" name="btnback">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="33" green="33" red="33" type="rgb"/>
+          <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="&gt;&gt;&gt; Back"/>
+        <Property name="text" type="java.lang.String" value="&gt;&gt;&gt;Back"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="LblTitle">
+    <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Helvetica Neue" size="16" style="1"/>
         </Property>
         <Property name="horizontalAlignment" type="int" value="0"/>
-        <Property name="text" type="java.lang.String" value="Create Account"/>
+        <Property name="text" type="java.lang.String" value="View Accoount"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="IblRoutingNumber">
+    <Component class="javax.swing.JLabel" name="lblRoutingNumber">
       <Properties>
         <Property name="text" type="java.lang.String" value="Routing Number"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtroutingnumber">
+    <Component class="javax.swing.JTextField" name="txtRoutingNumber">
     </Component>
-    <Component class="javax.swing.JLabel" name="IblAccountNumber">
+    <Component class="javax.swing.JLabel" name="lblAccountNumber">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Routing Number"/>
+        <Property name="text" type="java.lang.String" value="Account Number"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtaccountnumber">
+    <Component class="javax.swing.JTextField" name="txtAccountNumber">
     </Component>
-    <Component class="javax.swing.JLabel" name="IblBankName">
+    <Component class="javax.swing.JLabel" name="lblBankName">
       <Properties>
         <Property name="text" type="java.lang.String" value="Bank Name"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="txtbankname">
+    <Component class="javax.swing.JTextField" name="txtBankName">
     </Component>
-    <Component class="javax.swing.JLabel" name="IblBalance">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Balance"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtbalance">
-    </Component>
-    <Component class="javax.swing.JButton" name="btnCreateAccount">
+    <Component class="javax.swing.JButton" name="btnsave">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="66" green="66" red="66" type="rgb"/>
+          <Color blue="99" green="99" red="99" type="rgb"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Create Account"/>
+        <Property name="text" type="java.lang.String" value="Save"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btnupdate">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="99" green="99" red="99" type="rgb"/>
+        </Property>
+        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
     </Component>
   </SubComponents>
