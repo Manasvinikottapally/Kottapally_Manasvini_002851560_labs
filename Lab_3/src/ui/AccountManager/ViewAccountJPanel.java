@@ -4,6 +4,8 @@
  */
 package ui.AccountManager;
 
+import java.awt.CardLayout;
+import java.awt.Component;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.Account;
@@ -25,7 +27,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         initComponents();
         
         this.userProcessContainer = Container;
-        accountdirectory = directory;
+        this.accountdirectory = directory;
         this.account = account;
         refreshTextFields ();
         setViewMode ();
@@ -53,9 +55,14 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        btnback.setBackground(new java.awt.Color(153, 153, 153));
+        btnback.setBackground(new java.awt.Color(102, 102, 102));
         btnback.setForeground(new java.awt.Color(255, 255, 255));
         btnback.setText(">>>Back");
+        btnback.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnbackActionPerformed(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -67,7 +74,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
 
         lblBankName.setText("Bank Name");
 
-        btnsave.setBackground(new java.awt.Color(153, 153, 153));
+        btnsave.setBackground(new java.awt.Color(102, 102, 102));
         btnsave.setForeground(new java.awt.Color(255, 255, 255));
         btnsave.setText("Save");
         btnsave.addActionListener(new java.awt.event.ActionListener() {
@@ -76,7 +83,7 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnupdate.setBackground(new java.awt.Color(153, 153, 153));
+        btnupdate.setBackground(new java.awt.Color(102, 102, 102));
         btnupdate.setForeground(new java.awt.Color(255, 255, 255));
         btnupdate.setText("Update");
         btnupdate.addActionListener(new java.awt.event.ActionListener() {
@@ -170,6 +177,17 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         
     }//GEN-LAST:event_btnsaveActionPerformed
 
+    private void btnbackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnbackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        Component[] panelStack = userProcessContainer.getComponents();
+        JPanel lastPanel = (JPanel) panelStack[panelStack.length - 1];
+        ManageAccountJPanel manageAccountJPanel = (ManageAccountJPanel) lastPanel;
+        manageAccountJPanel.PopulateTable();
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout ();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnbackActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnback;
@@ -185,8 +203,8 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     private void refreshTextFields() {
-        txtRoutingNumber.setText(account.getRountingNumber ());
-        txtAccountNumber.setText(account.getAccountNumber ()) ;
+        txtRoutingNumber.setText(account.getRountingNumber());
+        txtAccountNumber.setText(account.getAccountNumber()) ;
         txtBankName.setText(account.getBankName()) ;
     }
 

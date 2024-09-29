@@ -29,7 +29,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         initComponents();
         userProcessContainer = Container;
         accountdirectory = directory;
-        
+        PopulateTable();
         
     }
 
@@ -53,7 +53,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        btnBack.setBackground(new java.awt.Color(153, 153, 153));
+        btnBack.setBackground(new java.awt.Color(102, 102, 102));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText(">>>Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
@@ -86,12 +86,23 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(tblAccounts);
+        if (tblAccounts.getColumnModel().getColumnCount() > 0) {
+            tblAccounts.getColumnModel().getColumn(0).setResizable(false);
+            tblAccounts.getColumnModel().getColumn(1).setResizable(false);
+            tblAccounts.getColumnModel().getColumn(2).setResizable(false);
+            tblAccounts.getColumnModel().getColumn(3).setResizable(false);
+        }
 
-        btnsearch.setBackground(new java.awt.Color(153, 153, 153));
+        btnsearch.setBackground(new java.awt.Color(102, 102, 102));
         btnsearch.setForeground(new java.awt.Color(255, 255, 255));
         btnsearch.setText("Search");
+        btnsearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsearchActionPerformed(evt);
+            }
+        });
 
-        btndelete.setBackground(new java.awt.Color(153, 153, 153));
+        btndelete.setBackground(new java.awt.Color(102, 102, 102));
         btndelete.setForeground(new java.awt.Color(255, 255, 255));
         btndelete.setText("Delete Account");
         btndelete.addActionListener(new java.awt.event.ActionListener() {
@@ -100,7 +111,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnviewaccount.setBackground(new java.awt.Color(153, 153, 153));
+        btnviewaccount.setBackground(new java.awt.Color(102, 102, 102));
         btnviewaccount.setForeground(new java.awt.Color(255, 255, 255));
         btnviewaccount.setText("View Account");
         btnviewaccount.addActionListener(new java.awt.event.ActionListener() {
@@ -179,7 +190,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
             else {
                JOptionPane. showMessageDialog (null, "Please seleft an account from the list.", "Warning", JOptionPane.WARNING_MESSAGE);
     }//GEN-LAST:event_btndeleteActionPerformed
-
+        }}   
     private void btnviewaccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewaccountActionPerformed
                                                       
         // TODO add your handling code here:
@@ -199,6 +210,29 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                                                  
     }//GEN-LAST:event_btnviewaccountActionPerformed
 
+    private void btnsearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsearchActionPerformed
+        // TODO add your handling code here:
+        if (!txtsearch.getText().isBlank()) {
+            String accountNumber = txtsearch.getText();
+            Account foundAccount = accountdirectory.searchAccount (accountNumber);
+        
+                 
+               if (foundAccount != null){
+                   ViewAccountJPanel panel = new ViewAccountJPanel(userProcessContainer,accountdirectory, foundAccount);
+                   userProcessContainer.add("ViewAccountJPanel", panel);
+                   CardLayout layout = (CardLayout) userProcessContainer.getLayout ();
+                   layout.next(userProcessContainer);
+               }
+               else {
+                    JOptionPane.showMessageDialog(null, "Accunt not found. Please check Ine account number and try again.","Warning", JOptionPane.WARNING_MESSAGE);
+               }
+    }
+               
+            else {
+                 JOptionPane.showMessageDialog (null, "Please type the account number to view.", "Warning", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_btnsearchActionPerformed
+    
+}
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
@@ -211,15 +245,18 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtsearch;
     // End of variables declaration//GEN-END:variables
 
-    private void PopulateTable() {
+    void PopulateTable() {
         DefaultTableModel model = (DefaultTableModel) tblAccounts.getModel();
         model.setRowCount(0);
-         for (Account a:accountdirectory.getAccounts ()) {
+        
+         for (Account a:accountdirectory.getAccounts()) {
+             //System.out.println(a.getBankName());
+             
               Object[] row = new Object[4];
               row[0] = a;
               row[1] = a.getRountingNumber ();
               row[2] = a.getAccountNumber();
-              row[3] = String.valueOf(a.getBalance ());
+              row[3] = String.valueOf(a.getBalance());
               model.addRow(row);
         }
     }

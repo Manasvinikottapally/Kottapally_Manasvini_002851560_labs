@@ -4,26 +4,26 @@
  */
 package ui.AccountManager;
 
+import model.*;
 import java.awt.CardLayout;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import model.Account;
-import model.AccountDirectory;
+
 
 /**
  *
  * @author manasvini
  */
 public class CreateAccountJPanel extends javax.swing.JPanel {
-    JPanel userProcessContainer;
-    AccountDirectory accountdirectory;
+    private JPanel userProcessContainer;
+    private AccountDirectory accountdirectory;
     /**
      * Creates new form CreateAccountJPanel
      */
-    public CreateAccountJPanel(JPanel Container , AccountDirectory  directory) {
+    public CreateAccountJPanel(JPanel userProcessContainer , AccountDirectory  accountdirectory) {
         initComponents();
-        userProcessContainer = Container;
-        accountdirectory = directory;
+        this.userProcessContainer = userProcessContainer;
+        this.accountdirectory = accountdirectory;
     }
 
     /**
@@ -49,7 +49,7 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
 
         setBackground(new java.awt.Color(204, 204, 204));
 
-        btnback.setBackground(new java.awt.Color(153, 153, 153));
+        btnback.setBackground(new java.awt.Color(102, 102, 102));
         btnback.setForeground(new java.awt.Color(255, 255, 255));
         btnback.setText(">>>Back");
         btnback.addActionListener(new java.awt.event.ActionListener() {
@@ -88,7 +88,7 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
             }
         });
 
-        btnCreate.setBackground(new java.awt.Color(153, 153, 153));
+        btnCreate.setBackground(new java.awt.Color(102, 102, 102));
         btnCreate.setForeground(new java.awt.Color(255, 255, 255));
         btnCreate.setText("Create Account");
         btnCreate.addActionListener(new java.awt.event.ActionListener() {
@@ -191,7 +191,7 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
         String accountNumber = txtAccountNumber.getText();
         String bankName = txtBankName.getText();
         
-        if (routingNumber.isBlank() || bankName.isBlank() || accountNumber. isBlank())
+        if (routingNumber.isBlank() || bankName.isBlank() || accountNumber.isBlank())
         {
             JOptionPane.showMessageDialog(this, "All fields are mandatory.", "Error", JOptionPane.ERROR_MESSAGE);
              // pause until the user closes the dialog.
@@ -205,15 +205,15 @@ public class CreateAccountJPanel extends javax.swing.JPanel {
                 return;
     }//GEN-LAST:event_btnCreateActionPerformed
             Account a = accountdirectory.addAccount();
-            a. setRountingNumber (routingNumber); 
+            a.setRountingNumber (routingNumber); 
             a.setAccountNumber(accountNumber);
             a.setBankName (bankName) ; 
-            a.setBalance (balance) ;
+            a.setBalance (balance);
             
-            JOptionPane.showMessageDialog(this, "Account successfully created.", "Information", JOptionPane. INFORMATION_MESSAGE);
-             txtRoutingNumber.setText("'");
+             JOptionPane.showMessageDialog(this, "Account successfully created.", "Information", JOptionPane. INFORMATION_MESSAGE);
+             txtRoutingNumber.setText("");
              txtAccountNumber.setText("");
-             txtBankName.setText("'");
+             txtBankName.setText("");
              txtBalance.setText("");
        }
 
