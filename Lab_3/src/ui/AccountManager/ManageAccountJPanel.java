@@ -4,16 +4,23 @@
  */
 package ui.AccountManager;
 
+import model.*;
+import java.awt.CardLayout;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import model.AccountDirectory;
+import javax.swing.table.DefaultTableModel;
+//import java.awt.Component;
+
+
 
 /**
  *
  * @author manasvini
  */
 public class ManageAccountJPanel extends javax.swing.JPanel {
-    JPanel userProcessContainer;
-    AccountDirectory accountdirectory;
+    private JPanel userProcessContainer;
+    private AccountDirectory accountdirectory;
+    
 
     /**
      * Creates new form ManageAccountJPanel
@@ -22,6 +29,8 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         initComponents();
         userProcessContainer = Container;
         accountdirectory = directory;
+        
+        
     }
 
     /**
@@ -36,23 +45,28 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
         btnBack = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblAccounts = new javax.swing.JTable();
         btnsearch = new javax.swing.JButton();
         txtsearch = new javax.swing.JTextField();
-        btnviewdetails = new javax.swing.JButton();
         btndelete = new javax.swing.JButton();
+        btnviewaccount = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(204, 204, 204));
 
         btnBack.setBackground(new java.awt.Color(153, 153, 153));
         btnBack.setForeground(new java.awt.Color(255, 255, 255));
         btnBack.setText(">>>Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         lblTitle.setFont(new java.awt.Font("Helvetica Neue", 1, 16)); // NOI18N
         lblTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblTitle.setText("Manage Account");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblAccounts.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -71,19 +85,29 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblAccounts);
 
         btnsearch.setBackground(new java.awt.Color(153, 153, 153));
         btnsearch.setForeground(new java.awt.Color(255, 255, 255));
         btnsearch.setText("Search");
 
-        btnviewdetails.setBackground(new java.awt.Color(153, 153, 153));
-        btnviewdetails.setForeground(new java.awt.Color(255, 255, 255));
-        btnviewdetails.setText("View Details");
-
         btndelete.setBackground(new java.awt.Color(153, 153, 153));
         btndelete.setForeground(new java.awt.Color(255, 255, 255));
         btndelete.setText("Delete Account");
+        btndelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btndeleteActionPerformed(evt);
+            }
+        });
+
+        btnviewaccount.setBackground(new java.awt.Color(153, 153, 153));
+        btnviewaccount.setForeground(new java.awt.Color(255, 255, 255));
+        btnviewaccount.setText("View Account");
+        btnviewaccount.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnviewaccountActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -101,9 +125,9 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(303, 303, 303)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnsearch, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnviewdetails))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnsearch, javax.swing.GroupLayout.DEFAULT_SIZE, 116, Short.MAX_VALUE)
+                    .addComponent(btnviewaccount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btndelete, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -111,7 +135,7 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btndelete, btnsearch, btnviewdetails});
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {btndelete, btnsearch});
 
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -128,21 +152,76 @@ public class ManageAccountJPanel extends javax.swing.JPanel {
                     .addComponent(txtsearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnviewdetails)
-                    .addComponent(btndelete))
+                    .addComponent(btndelete)
+                    .addComponent(btnviewaccount))
                 .addContainerGap(265, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        // TODO add your handling code here:
+        userProcessContainer.remove(this);
+        CardLayout layout = (CardLayout) userProcessContainer.getLayout();
+        layout.previous(userProcessContainer);
+    }//GEN-LAST:event_btnBackActionPerformed
+
+    private void btndeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btndeleteActionPerformed
+        // TODO add your handling code here:
+        int selectedRow = tblAccounts.getSelectedRow() ;
+        if (selectedRow >= 0) {
+            int dialogButton = JOptionPane.YES_NO_OPTION;
+            int dialogResult = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete the selected account?", "Warning",dialogButton);
+            if (dialogResult == JOptionPane.YES_OPTION) {
+                Account selectedAccount = (Account) tblAccounts.getValueAt (selectedRow, 0) ;
+                accountdirectory.deleteAccount(selectedAccount);
+                PopulateTable();
+        }
+            else {
+               JOptionPane. showMessageDialog (null, "Please seleft an account from the list.", "Warning", JOptionPane.WARNING_MESSAGE);
+    }//GEN-LAST:event_btndeleteActionPerformed
+
+    private void btnviewaccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnviewaccountActionPerformed
+                                                      
+        // TODO add your handling code here:
+        int selectedRow = tblAccounts.getSelectedRow();
+        if (selectedRow >= 0) {
+            Account selectedAccount = (Account) tblAccounts.getValueAt(selectedRow, 0) ;
+              // We want to open ViewPanel here for the selected account
+              ViewAccountJPanel panel = new ViewAccountJPanel(userProcessContainer, accountdirectory, selectedAccount);
+              userProcessContainer.add("ViewAccountJPanel", panel);
+              CardLayout layout = (CardLayout) userProcessContainer.getLayout ();
+              layout.next(userProcessContainer);
+    }
+        else{
+            JOptionPane.showMessageDialog(null, "Please select an account from the list to view.", "Warning", JOptionPane.WARNING_MESSAGE);
+        }
+        
+                                                 
+    }//GEN-LAST:event_btnviewaccountActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btndelete;
     private javax.swing.JButton btnsearch;
-    private javax.swing.JButton btnviewdetails;
+    private javax.swing.JButton btnviewaccount;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblTitle;
+    private javax.swing.JTable tblAccounts;
     private javax.swing.JTextField txtsearch;
     // End of variables declaration//GEN-END:variables
+
+    private void PopulateTable() {
+        DefaultTableModel model = (DefaultTableModel) tblAccounts.getModel();
+        model.setRowCount(0);
+         for (Account a:accountdirectory.getAccounts ()) {
+              Object[] row = new Object[4];
+              row[0] = a;
+              row[1] = a.getRountingNumber ();
+              row[2] = a.getAccountNumber();
+              row[3] = String.valueOf(a.getBalance ());
+              model.addRow(row);
+        }
+    }
 }
+

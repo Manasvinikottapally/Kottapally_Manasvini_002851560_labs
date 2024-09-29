@@ -4,17 +4,31 @@
  */
 package ui.AccountManager;
 
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.Account;
+import model.AccountDirectory;
+
 /**
  *
  * @author manasvini
  */
 public class ViewAccountJPanel extends javax.swing.JPanel {
+    private JPanel userProcessContainer;
+    private AccountDirectory accountdirectory;
+    private Account account;
 
     /**
      * Creates new form ViewAccountJPanel
      */
-    public ViewAccountJPanel() {
+    public ViewAccountJPanel(JPanel Container , AccountDirectory  directory, Account account) {
         initComponents();
+        
+        this.userProcessContainer = Container;
+        accountdirectory = directory;
+        this.account = account;
+        refreshTextFields ();
+        setViewMode ();
     }
 
     /**
@@ -56,10 +70,20 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         btnsave.setBackground(new java.awt.Color(153, 153, 153));
         btnsave.setForeground(new java.awt.Color(255, 255, 255));
         btnsave.setText("Save");
+        btnsave.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnsaveActionPerformed(evt);
+            }
+        });
 
         btnupdate.setBackground(new java.awt.Color(153, 153, 153));
         btnupdate.setForeground(new java.awt.Color(255, 255, 255));
         btnupdate.setText("Update");
+        btnupdate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnupdateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -122,6 +146,30 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnupdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnupdateActionPerformed
+        // TODO add your handling code here:
+        setEditMode();
+    }//GEN-LAST:event_btnupdateActionPerformed
+
+    private void btnsaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsaveActionPerformed
+        // TODO add your handling code here:
+        String routingNumber = txtRoutingNumber.getText ();
+        String accountNumber = txtAccountNumber.getText ();
+        String bankName = txtBankName.getText();
+        
+        if (routingNumber.isBlank() || accountNumber.isBlank() || bankName.isBlank()){
+        JOptionPane.showMessageDialog(null, "All fields are mandatory."); 
+        return;}
+        
+        account.setRountingNumber(routingNumber); 
+        account.setAccountNumber(accountNumber);
+        account.setBankName(bankName) ;
+        
+        JOptionPane.showMessageDialog (null, "Account successfully updated.", "Warning", JOptionPane.WARNING_MESSAGE);
+        setViewMode ();
+        
+    }//GEN-LAST:event_btnsaveActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnback;
@@ -135,4 +183,27 @@ public class ViewAccountJPanel extends javax.swing.JPanel {
     private javax.swing.JTextField txtBankName;
     private javax.swing.JTextField txtRoutingNumber;
     // End of variables declaration//GEN-END:variables
+
+    private void refreshTextFields() {
+        txtRoutingNumber.setText(account.getRountingNumber ());
+        txtAccountNumber.setText(account.getAccountNumber ()) ;
+        txtBankName.setText(account.getBankName()) ;
+    }
+
+    private void setViewMode() {
+        
+        txtRoutingNumber.setEnabled (false); 
+        txtAccountNumber.setEnabled (false); 
+        txtBankName. setEnabled (false); 
+        btnsave.setEnabled (false);
+        btnupdate.setEnabled (true);
+    }
+    private void setEditMode() {
+        txtRoutingNumber.setEnabled (true); 
+        txtAccountNumber.setEnabled (true);
+        txtBankName.setEnabled (true);
+        
+        btnsave.setEnabled (true);
+        btnupdate.setEnabled (false) ;
+}
 }
