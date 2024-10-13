@@ -1,31 +1,35 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
  */
 package ui;
 
-import model.Supplierdirectory;
 import java.awt.CardLayout;
 import model.Supplier;
+import model.Supplierdirectory;
 
 /**
  *
  * @author manasvini
  */
 public class MainJFrame extends javax.swing.JFrame {
-     Supplierdirectory Supplierdirectory;
+
+    Supplierdirectory supplierdirectory;
+    
     /**
      * Creates new form MainJFrame
      */
     public MainJFrame() {
         initComponents();
         
-         Supplierdirectory = new Supplierdirectory();
+        supplierdirectory = new Supplierdirectory();
         setSize(800,600);
         setResizable(false);
        
         
         setLoginScreen();
+    
     }
 
     /**
@@ -47,11 +51,11 @@ public class MainJFrame extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainWorkArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainWorkArea, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainWorkArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -93,18 +97,23 @@ public class MainJFrame extends javax.swing.JFrame {
     }
 
     private void setLoginScreen() {
-        Loginscreen ls = new Loginscreen (mainWorkArea,Supplierdirectory) ;
-        mainWorkArea. add ("LoginScreen", ls) ;
-        CardLayout layout = (CardLayout) mainWorkArea.getLayout () ;
-        layout .next (mainWorkArea) ;
+
+       Loginscreen ls = new Loginscreen(mainWorkArea,supplierdirectory);
+       mainWorkArea.add("Login Screen",ls);
+       CardLayout layout = (CardLayout) mainWorkArea.getLayout();
+       layout.next(mainWorkArea);
+       
+
+    }
+    
+    private void populateDemoData(){
+        Supplier bestBuy = supplierdirectory.addSupplier();
+        bestBuy.setSupplyName("Best Buy");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel mainWorkArea;
     // End of variables declaration//GEN-END:variables
-     private void populateDemoData () {
-         Supplier bestBuy = Supplierdirectory.addSupplier () ;
-         bestBuy. setSupplyName ("Best Buy") ;
-}
 
+    
 }

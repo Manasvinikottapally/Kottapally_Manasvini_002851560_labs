@@ -1,8 +1,9 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
  */
 package ui.admin;
+
 import model.Product;
 import model.Supplier;
 import java.awt.CardLayout;
@@ -14,20 +15,37 @@ import javax.swing.table.DefaultTableModel;
  * @author manasvini
  */
 public class ViewSupplier extends javax.swing.JPanel {
+
     JPanel workArea;
     Supplier supplier;
+    
     /**
      * Creates new form ViewSupplier
      */
     public ViewSupplier(JPanel workArea, Supplier supplier) {
         initComponents();
-        
         this.workArea = workArea;
         this.supplier = supplier;
         
         lblSupplierName.setText(supplier.getSupplyName());
         
         refreshTable();
+        
+    }
+    
+    private void refreshTable() {
+        
+        DefaultTableModel model = (DefaultTableModel)productCatalog.getModel();
+        model.setRowCount(0);
+        
+        for(Product p : supplier.getProductCatalog().getProductCatalog()) {
+            Object row[] = new Object[3];
+            row[0] = p;
+            row[1] = p.getID();
+            row[2] = p.getPrice();
+            model.addRow(row);
+        }
+        image.setIcon(supplier.getLogoImage());
     }
 
     /**
@@ -39,21 +57,15 @@ public class ViewSupplier extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnBack = new javax.swing.JButton();
         lblSupplierName = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         productCatalog = new javax.swing.JTable();
+        btnBack = new javax.swing.JButton();
+        image = new javax.swing.JLabel();
 
-        btnBack.setText(">>>Back");
-        btnBack.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBackActionPerformed(evt);
-            }
-        });
+        setBackground(new java.awt.Color(255, 255, 255));
 
-        lblSupplierName.setFont(new java.awt.Font("Helvetica Neue", 1, 15)); // NOI18N
-        lblSupplierName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblSupplierName.setText("View Suppliers");
+        lblSupplierName.setText("<Supplier Name>");
 
         productCatalog.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -67,7 +79,7 @@ public class ViewSupplier extends javax.swing.JPanel {
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, true, true
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -75,37 +87,49 @@ public class ViewSupplier extends javax.swing.JPanel {
             }
         });
         jScrollPane1.setViewportView(productCatalog);
-        if (productCatalog.getColumnModel().getColumnCount() > 0) {
-            productCatalog.getColumnModel().getColumn(0).setResizable(false);
-            productCatalog.getColumnModel().getColumn(1).setResizable(false);
-            productCatalog.getColumnModel().getColumn(2).setResizable(false);
-        }
+
+        btnBack.setText("<< Back");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        image.setText("<<Supplier Image>>");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(32, 32, 32)
-                .addComponent(btnBack)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSupplierName, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 765, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 19, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(20, 20, 20)
+                        .addComponent(btnBack)
+                        .addGap(34, 34, 34)
+                        .addComponent(lblSupplierName))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 507, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(image)))
+                .addContainerGap(131, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
+                .addGap(20, 20, 20)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnBack)
-                    .addComponent(lblSupplierName, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(392, Short.MAX_VALUE))
+                    .addComponent(lblSupplierName)
+                    .addComponent(btnBack))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(84, 84, 84)
+                        .addComponent(image)))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -116,24 +140,11 @@ public class ViewSupplier extends javax.swing.JPanel {
         layout.previous(workArea);
     }//GEN-LAST:event_btnBackActionPerformed
 
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
+    private javax.swing.JLabel image;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblSupplierName;
     private javax.swing.JTable productCatalog;
     // End of variables declaration//GEN-END:variables
-
-    private void refreshTable() {
-        DefaultTableModel model = (DefaultTableModel)productCatalog.getModel();
-        model.setRowCount(0);
-        
-        for(Product p : supplier.getProductCatalog().getProductCatalog()) {
-            Object row[] = new Object[3];
-            row[0] = p;
-            row[1] = p.getID();
-            row[2] = p.getPrice();
-            model.addRow(row);
-        }
-    }
 }

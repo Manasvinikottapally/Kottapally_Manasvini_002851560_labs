@@ -112,12 +112,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>
-        <Property name="text" type="java.lang.String" value="New Supplier Information:"/>
+        <Property name="text" type="java.lang.String" value="Update Supplier"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnAddSupplier">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Add"/>
+        <Property name="text" type="java.lang.String" value="Update"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddSupplierActionPerformed"/>

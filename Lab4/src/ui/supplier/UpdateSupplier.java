@@ -9,8 +9,9 @@
  * Created on Oct 1, 2011, 11:55:16 AM
  */
 
-package ui.admin;
+package ui.supplier;
 
+import ui.admin.*;
 import model.Supplier;
 import model.Supplierdirectory;
 import java.awt.CardLayout;
@@ -33,21 +34,21 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  *
  * @author manasvini
  */
-public class AddSupplier extends javax.swing.JPanel {
+public class UpdateSupplier extends javax.swing.JPanel {
 
     private JPanel workArea;
-    private Supplierdirectory supplierDirectory;
+    private Supplier supplier;
     
     private final JFileChooser fileChooser = new JFileChooser();
     ImageIcon logoImage;
     
     /** Creates new form AddSupplier */
-    public AddSupplier(JPanel workArea, Supplierdirectory supplierdirectory) {
+    public UpdateSupplier(JPanel workArea, Supplier supplier) {
         initComponents();
         this.workArea = workArea;
-        this.supplierDirectory = supplierDirectory;
-        
-    
+        this.supplier = supplier;  
+        populateData();
+          
     }
 
     /** This method is called from within the constructor to
@@ -76,9 +77,9 @@ public class AddSupplier extends javax.swing.JPanel {
 
         lblName.setText("Name:");
 
-        lblTitle.setText("New Supplier Information:");
+        lblTitle.setText("Update Supplier");
 
-        btnAddSupplier.setText("Add");
+        btnAddSupplier.setText("Update");
         btnAddSupplier.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddSupplierActionPerformed(evt);
@@ -185,12 +186,11 @@ public class AddSupplier extends javax.swing.JPanel {
 
     private void btnAddSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierActionPerformed
         // TODO add your handling code here:
-        Supplier supplier = supplierDirectory.addSupplier();
         supplier.setSupplyName(txtName.getText());
-        supplier.setLogoImage(logoImage);
         supplier.setDescription(txtDescription.getText());
+        supplier.setLogoImage(logoImage);
+        
         JOptionPane.showMessageDialog(this, "Supplier successfully added", "Warning", JOptionPane.INFORMATION_MESSAGE);
-        backAction();
     }//GEN-LAST:event_btnAddSupplierActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
@@ -198,6 +198,12 @@ public class AddSupplier extends javax.swing.JPanel {
        backAction();
     }//GEN-LAST:event_backButtonActionPerformed
 
+    public void populateData()
+    {
+        txtName.setText(supplier.getSupplyName());
+        txtDescription.setText(supplier.getDescription());
+        imgLogo.setIcon(supplier.getLogoImage());
+    }
     private void btnAttachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAttachActionPerformed
         // TODO add your handling code here:
         int returnVal = fileChooser.showOpenDialog(this);
