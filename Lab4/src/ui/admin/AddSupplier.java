@@ -36,7 +36,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 public class AddSupplier extends javax.swing.JPanel {
 
     private JPanel workArea;
-    private Supplierdirectory supplierDirectory;
+    private Supplierdirectory supplierdirectory;
     
     private final JFileChooser fileChooser = new JFileChooser();
     ImageIcon logoImage;
@@ -45,7 +45,7 @@ public class AddSupplier extends javax.swing.JPanel {
     public AddSupplier(JPanel workArea, Supplierdirectory supplierdirectory) {
         initComponents();
         this.workArea = workArea;
-        this.supplierDirectory = supplierDirectory;
+        this.supplierdirectory = supplierdirectory;
         
     
     }
@@ -185,7 +185,7 @@ public class AddSupplier extends javax.swing.JPanel {
 
     private void btnAddSupplierActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddSupplierActionPerformed
         // TODO add your handling code here:
-        Supplier supplier = supplierDirectory.addSupplier();
+        Supplier supplier = supplierdirectory.addSupplier();
         supplier.setSupplyName(txtName.getText());
         supplier.setLogoImage(logoImage);
         supplier.setDescription(txtDescription.getText());

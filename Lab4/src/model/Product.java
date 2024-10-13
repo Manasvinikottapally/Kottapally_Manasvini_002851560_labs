@@ -31,6 +31,9 @@ public class Product {
         count++;
         ID = count;
         
+        features = new ArrayList<Features>();
+        
+        
     }
 
     public String getName() {

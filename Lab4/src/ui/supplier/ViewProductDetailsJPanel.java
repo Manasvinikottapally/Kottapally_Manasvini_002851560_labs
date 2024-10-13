@@ -291,7 +291,7 @@ if(selectedRow < 0){
         DefaultTableModel model = (DefaultTableModel) tblFeatures.getModel();
         model.setRowCount(0);
         
-        for(Features f : product.getFeatures()){
+           for(Features f : product.getFeatures()){
             Object row[] = new Object[2];
             row[0] =f.getName();
             row[1] = f.getValue() == null ? "" : f.getValue();

@@ -11,7 +11,7 @@ package model;
 public class Features {
     
     private Product owner;
-    private String name;
+    private String Name;
     private  Object value;
 
     public Features() {
@@ -21,8 +21,8 @@ public class Features {
         this.owner = owner;
     }
     
-    public Features(Product owner, String name, Object value){
-        this.name = name;
+    public Features(Product owner, String Name, Object value){
+        this.Name = Name;
         this.value = value;
     }
 
@@ -35,11 +35,11 @@ public class Features {
     }
 
     public String getName() {
-        return name;
+        return Name;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.Name = name;
     }
 
     public Object getValue() {
@@ -52,7 +52,7 @@ public class Features {
     
     @Override
     public String toString(){
-        return name;
+        return Name;
     }
     
 }
