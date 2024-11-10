@@ -8,6 +8,7 @@ package ui.CustomerRole;
 import java.awt.CardLayout;
 import javax.swing.JPanel;
 import model.MasterOrderList;
+import model.Order;
 import model.SupplierDirectory;
 
 
@@ -25,6 +26,7 @@ public class CustomerWorkAreaJPanel extends javax.swing.JPanel {
      JPanel userProcessContainer;
      SupplierDirectory supplierDirectory;
      MasterOrderList masterOrderList;
+     Order currentOrder;
 
     /** Creates new form ProductManagerWorkAreaJPanel */
     public CustomerWorkAreaJPanel( JPanel userProcessContainer, SupplierDirectory supplierDirectory , MasterOrderList masterOrderList) {
