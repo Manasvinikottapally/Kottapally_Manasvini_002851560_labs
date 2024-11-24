@@ -97,6 +97,7 @@ public class SocialMedia_Main {
         helper.getAverageLikesPerComments();
         helper. getMaxLikeCommentPost () ;
         helper.getPostwithMostComments();
-//        helper.getPassiveUsers();
+        helper.getPassiveUsers();
+        helper.getPassiveCommentUsers();
     }
 }
