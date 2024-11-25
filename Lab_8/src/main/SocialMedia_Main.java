@@ -99,5 +99,6 @@ public class SocialMedia_Main {
         helper.getPostwithMostComments();
         helper.getPassiveUsers();
         helper.getPassiveCommentUsers();
+        helper.getPassiveAndActiveOverallUsers();
     }
 }

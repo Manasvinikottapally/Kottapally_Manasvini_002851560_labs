@@ -124,7 +124,10 @@ public class AnalysisHelper {
          Collections.sort (users, new UserMapComparator (overallNumbers) );
          System. out.println("Q6 - The following users have overall been passive: ");
          for (int i = 0; i < 5; i++){
+              System. out.println (users.get (i) +", - Comment count: "+ overallNumbers.get (users.get (i).getId()));}
+         System. out.println("Q7 - The following users have overall been passive: ");
+         for (int i = users.size ()-1; i > users. size ()-6; i--){
               System. out.println (users.get (i) +", - Comment count: "+ overallNumbers.get (users.get (i).getId()));
           }
-    }
-}
+          }
+   }
